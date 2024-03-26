@@ -19,8 +19,6 @@
 #ifndef BRAINFUCK_BRAINFUCK_H
 #define BRAINFUCK_BRAINFUCK_H
 
-#include <stddef.h>
-
 typedef struct
 {
     const char* begin;
@@ -28,8 +26,8 @@ typedef struct
 } loop;
 
 typedef struct {
-    loop* first;
-    size_t size;
+    loop* begin;
+    loop* end;
 } loops;
 
 /**

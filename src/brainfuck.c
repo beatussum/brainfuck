@@ -62,9 +62,11 @@ loops build_loops(const char* __input)
         }
     }
 
-    loops ret = { .first = malloc(sizeof(loop) * n), .size = n };
+    loops ret = { .begin = malloc(sizeof(loop) * n) };
 
-    for (loop* i = ret.first; *__input != '\0'; ++__input) {
+    loop* i = ret.begin;
+
+    for (; *__input != '\0'; ++__input) {
         switch (*__input) {
             case '[':
                 i->begin = __input;
@@ -79,6 +81,8 @@ loops build_loops(const char* __input)
                 break;
         }
     }
+
+    ret.end = (i + 1);
 
     return ret;
 }
