@@ -44,3 +44,8 @@ char* get_input(char* __filename)
         return ret;
     }
 }
+
+void free_input(char* __input)
+{
+    free(__input);
+}

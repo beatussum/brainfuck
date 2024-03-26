@@ -28,4 +28,11 @@
  */
 char* get_input(char* __filename);
 
+/**
+ * @brief Libère ce qui a été alloué par `get_input_prog()`
+ *
+ * @param __input l'entrée à libérer
+ */
+void free_input(char* __input);
+
 #endif // BRAINFUCK_BRAINFUCK_H
