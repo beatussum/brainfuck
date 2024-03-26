@@ -26,7 +26,7 @@
  * @return un tableau de caractère terminé par le caractère `'\0'` ou `NULL` si
  * `input_filename` n'existe pas dans le répertoire courant
  */
-char* get_input(char* __filename);
+const char* get_input(const char* __filename);
 
 /**
  * @brief Libère ce qui a été alloué par `get_input_prog()`

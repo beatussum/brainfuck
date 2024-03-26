@@ -16,6 +16,8 @@
  */
 
 
+#include "brainfuck.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -28,7 +30,7 @@ static long get_size_of_file(FILE* __file)
     return (ret + 1);
 }
 
-char* get_input(char* __filename)
+const char* get_input(const char* __filename)
 {
     FILE* file = fopen(__filename, "r");
 

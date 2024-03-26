@@ -70,10 +70,10 @@ add_gcc_c_flags(
     -Wuninitialized
 )
 
-set(BRAINFUCK_C main.c)
+set(BRAINFUCK_C main.c brainfuck.c)
 list(TRANSFORM BRAINFUCK_C PREPEND "src/")
 
-set(BRAINFUCK_H)
+set(BRAINFUCK_H brainfuck.h)
 list(TRANSFORM BRAINFUCK_H PREPEND "include/")
 
 include_directories(include)
