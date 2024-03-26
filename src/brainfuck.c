@@ -51,3 +51,34 @@ void free_input(char* __input)
 {
     free(__input);
 }
+
+loops build_loops(const char* __input)
+{
+    size_t n = 0;
+
+    for (const char* i = __input; *i != '\0'; ++i) {
+        if (*i == '[') {
+            ++n;
+        }
+    }
+
+    loops ret = { .first = malloc(sizeof(loop) * n), .size = n };
+
+    for (loop* i = ret.first; *__input != '\0'; ++__input) {
+        switch (*__input) {
+            case '[':
+                i->begin = __input;
+
+                break;
+            case ']':
+                i->end = __input;
+                ++i;
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    return ret;
+}
