@@ -60,4 +60,13 @@ void free_input(char* __input);
  */
 loops build_loops(const char* __input);
 
+/**
+ * @brief Libère ce qui a été alloué par `build_loops`.
+ *
+ * @param loops L'instance `loops` à libérer
+ *
+ * @see build_loops
+ */
+void free_loops(loops* __loops);
+
 #endif // BRAINFUCK_BRAINFUCK_H
