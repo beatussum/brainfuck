@@ -19,6 +19,8 @@
 #ifndef BRAINFUCK_BRAINFUCK_H
 #define BRAINFUCK_BRAINFUCK_H
 
+#include <stdint.h>
+
 typedef struct
 {
     const char* begin;
@@ -68,5 +70,20 @@ loops build_loops(const char* __input);
  * @see build_loops
  */
 void free_loops(loops* __loops);
+
+/**
+ * @brief Exécute l'instruction pointée et passe à la suivante.
+ *
+ * @param __current_instruction un pointeur vers le pointeur d'instructions
+ * @param __current_cell un pointeur vers le pointeur de données
+ * @param __current_loop un pointeur vers le pointeur de la boucle courante
+ *
+ * @see build_loops
+ */
+void execute_instruction(
+    const char** __current_instruction,
+    uint8_t** __current_cell,
+    loop** __current_loop
+);
 
 #endif // BRAINFUCK_BRAINFUCK_H

@@ -95,3 +95,51 @@ void free_loops(loops* __loops)
 
     *__loops = (loops) { .begin = NULL, .end = NULL };
 }
+
+void execute_instruction(
+    const char** __current_instruction,
+    uint8_t** __current_cell,
+    loop** __current_loop
+)
+{
+    switch (**__current_instruction) {
+        case '>':
+            ++(*__current_cell);
+
+            break;
+        case '<':
+            --(*__current_cell);
+
+            break;
+        case '+':
+            ++(*(*__current_cell));
+
+            break;
+        case '-':
+            --(*(*__current_cell));
+
+            break;
+        case '.':
+            putchar(**__current_cell);
+
+            break;
+        case ',':
+            **__current_cell = getchar();
+
+            break;
+        case '[':
+            break;
+        case ']':
+            if (**__current_cell == 0) {
+                ++(*__current_loop);
+            } else {
+                *__current_instruction = (*__current_loop)->begin;
+            }
+
+            break;
+        default:
+            break;
+    }
+
+    ++(*__current_instruction);
+}
