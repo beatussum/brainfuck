@@ -16,8 +16,6 @@
 
 cmake_minimum_required(VERSION 3.28.3)
 
-set(LINUX (UNIX AND NOT APPLE))
-
 project(
     brainfuck
     VERSION 0.9.0
