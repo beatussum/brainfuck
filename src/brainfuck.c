@@ -86,3 +86,12 @@ const loop* build_loops(const char* __input)
 
     return root;
 }
+
+void free_loops(loop* __loops)
+{
+    for (loop* next; __loops != NULL; __loops = next) {
+        next = (loop*) __loops->next;
+
+        free(__loops);
+    }
+}
