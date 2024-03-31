@@ -29,6 +29,27 @@ typedef struct loop {
 } loop;
 
 /**
+ * @brief Alloue le tableau dans lequel le programme Brainfuck stocke des
+ * valeurs
+ *
+ * @param __size la taille du tableau à allouer
+ * @return le pointeur sur le tableau alloué (nul en cas d'échec d'allocation)
+ *
+ * @see execute_instruction() free_cells()
+ */
+inline uint8_t* build_cells(size_t __size)
+    { return malloc(sizeof(uint8_t) * __size); }
+
+/**
+ * @brief Libère ce qui a été alloué par `build_cells()`
+ *
+ * @param __cells les cases à libérer
+ *
+ * @see build_cells()
+ */
+inline void free_cells(uint8_t* __cells) { free(__cells); }
+
+/**
  * @brief Récupère le programme Brainfuck à interpréter depuis un fichier
  *
  * @param __filename le nom du fichier Brainfuck à récupérer
