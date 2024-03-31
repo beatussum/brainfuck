@@ -96,3 +96,57 @@ void free_loops(loop* __loops)
         free(__loops);
     }
 }
+
+void execute_instruction(
+    const char** __current_instruction,
+    uint8_t** __current_cell,
+    const loop** __current_loop
+)
+{
+    switch (**__current_instruction) {
+        case '>':
+            ++(*__current_cell);
+
+            break;
+        case '<':
+            --(*__current_cell);
+
+            break;
+        case '+':
+            ++(**__current_cell);
+
+            break;
+        case '-':
+            --(**__current_cell);
+
+            break;
+        case '.':
+            putchar(**__current_cell);
+
+            break;
+        case ',':
+            **__current_cell = getchar();
+
+            break;
+        case '[':
+            *__current_loop = (*__current_loop)->next;
+
+            if (**__current_cell == 0) {
+                *__current_instruction = (*__current_loop)->end;
+            }
+
+            break;
+        case ']':
+            if (**__current_cell != 0) {
+                *__current_instruction = (*__current_loop)->begin;
+            } else {
+                *__current_loop = (*__current_loop)->parent;
+            }
+
+            break;
+        default:
+            break;
+    }
+
+    ++(*__current_instruction);
+}
