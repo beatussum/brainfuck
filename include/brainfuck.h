@@ -19,6 +19,12 @@
 #ifndef BRAINFUCK_BRAINFUCK_H
 #define BRAINFUCK_BRAINFUCK_H
 
+typedef struct loop {
+    const char*        begin;
+    const struct loop* next;
+    const struct loop* parent;
+} loop;
+
 /**
  * @brief Récupère le programme Brainfuck à interpréter depuis un fichier
  *
@@ -34,5 +40,19 @@ const char* get_input(const char* __filename);
  * @param __input l'entrée à libérer
  */
 void free_input(char* __input);
+
+/**
+ * @brief Construit le tableau des boucles
+ *
+ * Analyse le programme Brainfuck passé en paramètre pour construire un `loop`
+ * qui représente les boucles du programme. Celui-ci sera ensuite utilisé lors
+ * de l'exécution des instructions.
+ *
+ * @param __input le programme Brainfuck à analyser
+ * @return un `loop` qui représente les boucles du programme
+ *
+ * @see execute_instruction
+ */
+const loop* build_loops(const char* __input);
 
 #endif // BRAINFUCK_BRAINFUCK_H
