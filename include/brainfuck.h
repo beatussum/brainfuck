@@ -61,13 +61,13 @@ inline void free_cells(uint8_t* __cells) { free(__cells); }
 const char* get_input(const char* __filename);
 
 /**
- * @brief Libère ce qui a été alloué par `get_input_prog()`
+ * @brief Libère ce qui a été alloué par `get_input()`
  *
  * @param __input l'entrée à libérer
  *
  * @see get_input()
  */
-void free_input(char* __input);
+inline void free_input(char* __input) { free(__input); }
 
 /**
  * @brief Construit le tableau des boucles

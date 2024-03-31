@@ -47,11 +47,6 @@ const char* get_input(const char* __filename)
     }
 }
 
-void free_input(char* __input)
-{
-    free(__input);
-}
-
 const loop* build_loops(const char* __input)
 {
     loop* root = malloc(sizeof(loop));
