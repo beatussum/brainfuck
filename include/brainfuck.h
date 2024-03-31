@@ -20,6 +20,7 @@
 #define BRAINFUCK_BRAINFUCK_H
 
 #include <stdint.h>
+#include <stdlib.h>
 
 typedef struct loop {
     const char*        begin;
@@ -37,8 +38,8 @@ typedef struct loop {
  *
  * @see execute_instruction() free_cells()
  */
-inline uint8_t* build_cells(size_t __size)
-    { return malloc(sizeof(uint8_t) * __size); }
+static inline uint8_t* build_cells(size_t __size)
+    { return calloc(sizeof(uint8_t), __size); }
 
 /**
  * @brief Libère ce qui a été alloué par `build_cells()`
@@ -47,7 +48,7 @@ inline uint8_t* build_cells(size_t __size)
  *
  * @see build_cells()
  */
-inline void free_cells(uint8_t* __cells) { free(__cells); }
+static inline void free_cells(uint8_t* __cells) { free(__cells); }
 
 /**
  * @brief Récupère le programme Brainfuck à interpréter depuis un fichier
@@ -67,7 +68,7 @@ const char* get_input(const char* __filename);
  *
  * @see get_input()
  */
-inline void free_input(char* __input) { free(__input); }
+static inline void free_input(char* __input) { free(__input); }
 
 /**
  * @brief Construit le tableau des boucles
