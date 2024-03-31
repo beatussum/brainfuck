@@ -34,6 +34,8 @@ typedef struct loop {
  * @param __filename le nom du fichier Brainfuck à récupérer
  * @return un tableau de caractère terminé par le caractère `'\0'` ou `NULL` si
  * `input_filename` n'existe pas dans le répertoire courant
+ *
+ * @see execute_instruction() free_input()
  */
 const char* get_input(const char* __filename);
 
@@ -41,6 +43,8 @@ const char* get_input(const char* __filename);
  * @brief Libère ce qui a été alloué par `get_input_prog()`
  *
  * @param __input l'entrée à libérer
+ *
+ * @see get_input()
  */
 void free_input(char* __input);
 
@@ -54,7 +58,7 @@ void free_input(char* __input);
  * @param __input le programme Brainfuck à analyser
  * @return un `loop` qui représente les boucles du programme
  *
- * @see execute_instruction
+ * @see get_input() free_loops() loop execute_instruction()
  */
 const loop* build_loops(const char* __input);
 
@@ -63,7 +67,7 @@ const loop* build_loops(const char* __input);
  *
  * @param loops L'instance `loop` à libérer
  *
- * @see build_loops
+ * @see loop build_loops()
  */
 void free_loops(loop* __loops);
 
