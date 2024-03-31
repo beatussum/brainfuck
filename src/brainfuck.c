@@ -55,7 +55,7 @@ void free_input(char* __input)
 const loop* build_loops(const char* __input)
 {
     loop* root = malloc(sizeof(loop));
-    *root = (loop) { .begin = 0, .next = NULL, .parent = NULL };
+    *root = (loop) { .begin = 0, .end = 0, .next = NULL, .parent = NULL };
 
     const loop* current_parent = root;
     loop* current_previous = root;
@@ -65,7 +65,7 @@ const loop* build_loops(const char* __input)
             case '[':
                 loop* new = malloc(sizeof(loop));
 
-                new->begin  = (__input + 1);
+                new->begin  = __input;
                 new->next   = NULL;
                 new->parent = current_parent;
 
@@ -77,6 +77,7 @@ const loop* build_loops(const char* __input)
                 break;
             case ']':
                 current_parent = current_parent->parent;
+                current_previous->end = __input;
 
                 break;
             default:

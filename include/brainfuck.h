@@ -21,6 +21,7 @@
 
 typedef struct loop {
     const char*        begin;
+    const char*        end;
     const struct loop* next;
     const struct loop* parent;
 } loop;
