@@ -22,16 +22,45 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+/**
+ * @file
+ * @brief L'entête principale
+ */
+
+/**
+ * @brief Représente une boucle _Brainfuck_
+ *
+ * Le programme `[[][]][[][]]` sera représenté de la manière suivante :
+ *
+ * ```raw
+ *       R O O T
+ *          ↕
+ *    [[][]] [[][]]
+ *      ↙       ↖
+ *   [[][]]-->[[][]]
+ *    ↙  ↖     ↙  ↖
+ *   []->[]   []->[]
+ * ```
+ */
+
 typedef struct loop {
-    const char* begin;
-    const char* end;
+    const char* begin; ///< L'emplacement du caractère '['
+    const char* end; ///< L'emplacement du caractère ']'
+
+    /**
+     * @brief Un pointeur vers la boucle fille.
+     *
+     * @remark Ce membre est nul dans le cas où la boucle n'admet pas de boucle
+     * fille.
+     */
 
     const struct loop* below;
-    const struct loop* next;
+
+    const struct loop* next; ///< La sœur immédiatement à droite
 } loop;
 
 /**
- * @brief Alloue le tableau dans lequel le programme Brainfuck stocke des
+ * @brief Alloue le tableau dans lequel le programme _Brainfuck_ stocke des
  * valeurs
  *
  * @param __size la taille du tableau à allouer
@@ -39,6 +68,7 @@ typedef struct loop {
  *
  * @see execute_instruction() free_cells()
  */
+
 static inline uint8_t* build_cells(size_t __size)
     { return calloc(sizeof(uint8_t), __size); }
 
@@ -49,17 +79,19 @@ static inline uint8_t* build_cells(size_t __size)
  *
  * @see build_cells()
  */
+
 static inline void free_cells(uint8_t* __cells) { free(__cells); }
 
 /**
- * @brief Récupère le programme Brainfuck à interpréter depuis un fichier
+ * @brief Récupère le programme _Brainfuck_ à interpréter depuis un fichier
  *
- * @param __filename le nom du fichier Brainfuck à récupérer
- * @return un tableau de caractère terminé par le caractère `'\0'` ou `NULL` si
- * `input_filename` n'existe pas dans le répertoire courant
+ * @param __filename le nom du fichier _Brainfuck_ à récupérer
+ * @return un tableau de caractère terminé par le caractère '\0' ou `NULL` si
+ * `__filename` n'existe pas dans le répertoire courant
  *
  * @see execute_instruction() free_input()
  */
+
 const char* get_input(const char* __filename);
 
 /**
@@ -69,38 +101,51 @@ const char* get_input(const char* __filename);
  *
  * @see get_input()
  */
+
 static inline void free_input(char* __input) { free(__input); }
 
 /**
  * @brief Construit le tableau des boucles
  *
- * Analyse le programme Brainfuck passé en paramètre pour construire un `loop`
- * qui représente les boucles du programme. Celui-ci sera ensuite utilisé lors
- * de l'exécution des instructions.
+ * Analyse le programme _Brainfuck_ passé en paramètre pour construire un
+ * `loop` qui représente les boucles du programme. Celui-ci sera ensuite
+ * utilisé lors de l'exécution des instructions.
  *
- * @param __input le programme Brainfuck à analyser
+ * @param __input le programme _Brainfuck_ à analyser
  * @return un `loop` qui représente les boucles du programme
+ *
+ * @remark Pour des raisons d'implémentation, avoir plus de 255 boucles
+ * imbriquées les unes dans les autres n'est pas possible. Dans le cas où cette
+ * condition n'est pas respectée, le comportement est indéfini.
  *
  * @see get_input() free_loops() loop execute_instruction()
  */
+
 const loop* build_loops(const char* __input);
 
 /**
  * @brief Libère ce qui a été alloué par `build_loops`.
  *
- * @param loops L'instance `loop` à libérer
+ * @param __loops L'instance `loop` à libérer
  *
  * @see loop build_loops()
  */
+
 void free_loops(loop* __loops);
 
 /**
  * @brief Passe à la boucle suivante.
  *
+ * Si `__loop` possède une boucle fille, alors on retourne celle-ci ; sinon, on
+ * retourne la sœur immédiatement à sa droite. Dans le cas où `__loop` est
+ * nulle, alors on la valeur de retour est également nulle.
+ *
  * @param __loop L'instance `loop` à incrémenter
+ * @return la boucle suivant `__loop`
  *
  * @see loop build_loops()
  */
+
 const loop* next_loop(const loop* __loop);
 
 /**
@@ -112,9 +157,10 @@ const loop* next_loop(const loop* __loop);
  *
  * @see get_input() loop build_loops()
  */
+
 void execute_instruction(
     const char** __current_instruction,
-    uint8_t** __current_cell,
+    uint8_t**    __current_cell,
     const loop** __current_loop
 );
 

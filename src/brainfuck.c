@@ -19,7 +19,6 @@
 #include "brainfuck.h"
 
 #include <stdio.h>
-#include <stdlib.h>
 
 static long get_size_of_file(FILE* __file)
 {
@@ -59,8 +58,7 @@ const loop* build_loops(const char* __input)
     };
 
     loop* ancestors[256];
-
-    loop* current_previous = root;
+    loop* current_previous  = root;
     loop** current_ancestor = (ancestors - 1);
 
     for (; *__input != '\0'; ++__input) {
@@ -70,14 +68,14 @@ const loop* build_loops(const char* __input)
 
                 *new = (loop) {
                     .begin = __input,
-                    .end = NULL,
+                    .end   = NULL,
                     .below = NULL,
-                    .next = NULL
+                    .next  = NULL
                 };
 
                 if (current_previous->end == NULL) {
                     current_previous->below = new;
-                    *(++current_ancestor) = current_previous;
+                    *(++current_ancestor)   = current_previous;
 
                 } else {
                     current_previous->next = new;
@@ -91,8 +89,8 @@ const loop* build_loops(const char* __input)
                     current_previous->end = __input;
                 } else {
                     (*current_ancestor)->end = __input;
-                    current_previous->next = *current_ancestor;
-                    current_previous = *current_ancestor;
+                    current_previous->next   = *current_ancestor;
+                    current_previous         = *current_ancestor;
 
                     --current_ancestor;
                 }
@@ -120,7 +118,7 @@ void free_loops(loop* __loops)
                 next = i->next;
                 free(i);
             } else {
-                next = i->below;
+                next     = i->below;
                 i->below = NULL;
             }
 
@@ -144,7 +142,7 @@ const loop* next_loop(const loop* __loop)
 
 void execute_instruction(
     const char** __current_instruction,
-    uint8_t** __current_cell,
+    uint8_t**    __current_cell,
     const loop** __current_loop
 )
 {
@@ -176,7 +174,7 @@ void execute_instruction(
         case '[':
             if (**__current_cell == 0) {
                 *__current_instruction = (*__current_loop)->end;
-                *__current_loop = (*__current_loop)->next;
+                *__current_loop        = (*__current_loop)->next;
             } else if ((*__current_loop)->below != NULL) {
                 *__current_loop = (*__current_loop)->below;
             }

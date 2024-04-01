@@ -22,7 +22,7 @@
 #include <stdlib.h>
 
 static void free_resources(
-    uint8_t* __cells,
+    uint8_t*    __cells,
     const char* __input,
     const loop* __loops
 )
