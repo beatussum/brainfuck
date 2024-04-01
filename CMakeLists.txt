@@ -24,6 +24,8 @@ project(
     LANGUAGES C
 )
 
+option(WITH_DOCS "Enable building of documentation" OFF)
+
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(CompilerFlags)
@@ -73,6 +75,23 @@ list(TRANSFORM BRAINFUCK_C PREPEND "src/")
 
 set(BRAINFUCK_H brainfuck.h)
 list(TRANSFORM BRAINFUCK_H PREPEND "include/")
+
+find_package(Doxygen)
+
+if(DOXYGEN_FOUND AND WITH_DOCS)
+    set(DOCS_DIR "${CMAKE_BINARY_DIR}/docs" CACHE PATH "The path where the documention is built")
+    set(DOCS_NAMESPACE "fr.beatussum.brainfuck")
+
+    set(DOXYGEN_ALLOW_UNICODE_NAMES YES)
+    set(DOXYGEN_EXTRACT_STATIC YES)
+    set(DOXYGEN_INLINE_INHERITED_MEMB YES)
+    set(DOXYGEN_OUTPUT_DIRECTORY "${DOCS_DIR}")
+    set(DOXYGEN_OUTPUT_LANGUAGE "French")
+    set(DOXYGEN_WARN_LOGFILE "${DOCS_DIR}/log")
+    set(DOXYGEN_WARN_NO_PARAMDOC YES)
+
+    doxygen_add_docs(docs "${BRAINFUCK_H}" COMMENT "Generating documentation…")
+endif()
 
 include_directories(include)
 
