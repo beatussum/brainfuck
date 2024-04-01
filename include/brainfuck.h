@@ -134,21 +134,6 @@ const loop* build_loops(const char* __input);
 void free_loops(loop* __loops);
 
 /**
- * @brief Passe à la boucle suivante.
- *
- * Si `__loop` possède une boucle fille, alors on retourne celle-ci ; sinon, on
- * retourne la sœur immédiatement à sa droite. Dans le cas où `__loop` est
- * nulle, alors on la valeur de retour est également nulle.
- *
- * @param __loop L'instance `loop` à incrémenter
- * @return la boucle suivant `__loop`
- *
- * @see loop build_loops()
- */
-
-const loop* next_loop(const loop* __loop);
-
-/**
  * @brief Exécute l'instruction pointée et passe à la suivante.
  *
  * @param __current_instruction un pointeur vers le pointeur d'instructions

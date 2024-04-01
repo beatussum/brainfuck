@@ -129,7 +129,7 @@ void free_loops(loop* __loops)
     free(__loops);
 }
 
-const loop* next_loop(const loop* __loop)
+static const loop* next_loop(const loop* __loop)
 {
     if (__loop == NULL) {
         return NULL;
