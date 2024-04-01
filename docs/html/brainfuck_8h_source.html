@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>brainfuck:  Fichier source de include/brainfuck.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">brainfuck<span id="projectnumber">&#160;0.9.0</span>
+   </div>
+   <div id="projectbrief">A Brainfuck interpreter</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">brainfuck.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="brainfuck_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle &lt;beatussum@protonmail.com&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * This program is free software: you can redistribute it and/or modify it</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * under the terms of the GNU General Public License as published by the Free</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Software Foundation, either version 3 of the License, or (at your option)</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * any later version.</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment"> * This program is distributed in the hope that it will be useful, but WITHOUT</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment"> * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment"> * more details.</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment"> * You should have received a copy of the GNU General Public License along with</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifndef BRAINFUCK_BRAINFUCK_H</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define BRAINFUCK_BRAINFUCK_H</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structloop.html">   46</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code hl_struct" href="structloop.html">loop</a> {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structloop.html#ab46ed7ecff6cc49297814dceb0448f00">   47</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structloop.html#ab46ed7ecff6cc49297814dceb0448f00">begin</a>; </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structloop.html#a04426faf425fbe3a98ac239a87b727dc">   48</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_variable" href="structloop.html#a04426faf425fbe3a98ac239a87b727dc">end</a>; </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structloop.html#ad93e7c0c7a1e6c1e3ab441caf0a9f283">   57</a></span>    <span class="keyword">const</span> <span class="keyword">struct </span><a class="code hl_struct" href="structloop.html">loop</a>* <a class="code hl_variable" href="structloop.html#ad93e7c0c7a1e6c1e3ab441caf0a9f283">below</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structloop.html#a26c68144f21dc0d6d1f6784ae3f143aa">   59</a></span>    <span class="keyword">const</span> <span class="keyword">struct </span><a class="code hl_struct" href="structloop.html">loop</a>* <a class="code hl_variable" href="structloop.html#a26c68144f21dc0d6d1f6784ae3f143aa">next</a>; </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#a2036d83b2cc0c5ebbba5149fb6c18fbb">   60</a></span>} <a class="code hl_struct" href="structloop.html">loop</a>;</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#af926e4820e11ca4ae3798cce684669b7">   72</a></span><span class="keyword">static</span> <span class="keyword">inline</span> uint8_t* <a class="code hl_function" href="brainfuck_8h.html#af926e4820e11ca4ae3798cce684669b7">build_cells</a>(<span class="keywordtype">size_t</span> __size)</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    { <span class="keywordflow">return</span> calloc(<span class="keyword">sizeof</span>(uint8_t), __size); }</div>
+</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#afbd22270a4a8fe21552b07e2561056b0">   83</a></span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="brainfuck_8h.html#afbd22270a4a8fe21552b07e2561056b0">free_cells</a>(uint8_t* __cells) { free(__cells); }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580">   95</a></span><span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code hl_function" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580">get_input</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* __filename);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#ad14725d8e271d0514ba412843dfa768f">  105</a></span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="brainfuck_8h.html#ad14725d8e271d0514ba412843dfa768f">free_input</a>(<span class="keywordtype">char</span>* __input) { free(__input); }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a">  124</a></span><span class="keyword">const</span> <a class="code hl_struct" href="structloop.html">loop</a>* <a class="code hl_function" href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a">build_loops</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* __input);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#a53d062684320487d23a01c0545563920">  134</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="brainfuck_8h.html#a53d062684320487d23a01c0545563920">free_loops</a>(<a class="code hl_struct" href="structloop.html">loop</a>* __loops);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca">  146</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca">execute_instruction</a>(</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">const</span> <span class="keywordtype">char</span>** __current_instruction,</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    uint8_t**    __current_cell,</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keyword">const</span> <a class="code hl_struct" href="structloop.html">loop</a>** __current_loop</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="preprocessor">#endif </span><span class="comment">// BRAINFUCK_BRAINFUCK_H</span></div>
+<div class="ttc" id="abrainfuck_8h_html_a53d062684320487d23a01c0545563920"><div class="ttname"><a href="brainfuck_8h.html#a53d062684320487d23a01c0545563920">free_loops</a></div><div class="ttdeci">void free_loops(loop *__loops)</div><div class="ttdoc">Libère ce qui a été alloué par build_loops.</div></div>
+<div class="ttc" id="abrainfuck_8h_html_a56d7d84049608c407954a5ed6a93cbca"><div class="ttname"><a href="brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca">execute_instruction</a></div><div class="ttdeci">void execute_instruction(const char **__current_instruction, uint8_t **__current_cell, const loop **__current_loop)</div><div class="ttdoc">Exécute l'instruction pointée et passe à la suivante.</div></div>
+<div class="ttc" id="abrainfuck_8h_html_a9653d07c5fc9ff673d31a241a4626a2a"><div class="ttname"><a href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a">build_loops</a></div><div class="ttdeci">const loop * build_loops(const char *__input)</div><div class="ttdoc">Construit le tableau des boucles.</div></div>
+<div class="ttc" id="abrainfuck_8h_html_ad14725d8e271d0514ba412843dfa768f"><div class="ttname"><a href="brainfuck_8h.html#ad14725d8e271d0514ba412843dfa768f">free_input</a></div><div class="ttdeci">static void free_input(char *__input)</div><div class="ttdoc">Libère ce qui a été alloué par get_input()</div><div class="ttdef"><b>Definition</b> brainfuck.h:105</div></div>
+<div class="ttc" id="abrainfuck_8h_html_ae2a74accde30e647765865ea18fa4580"><div class="ttname"><a href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580">get_input</a></div><div class="ttdeci">const char * get_input(const char *__filename)</div><div class="ttdoc">Récupère le programme Brainfuck à interpréter depuis un fichier.</div></div>
+<div class="ttc" id="abrainfuck_8h_html_af926e4820e11ca4ae3798cce684669b7"><div class="ttname"><a href="brainfuck_8h.html#af926e4820e11ca4ae3798cce684669b7">build_cells</a></div><div class="ttdeci">static uint8_t * build_cells(size_t __size)</div><div class="ttdoc">Alloue le tableau dans lequel le programme Brainfuck stocke des valeurs.</div><div class="ttdef"><b>Definition</b> brainfuck.h:72</div></div>
+<div class="ttc" id="abrainfuck_8h_html_afbd22270a4a8fe21552b07e2561056b0"><div class="ttname"><a href="brainfuck_8h.html#afbd22270a4a8fe21552b07e2561056b0">free_cells</a></div><div class="ttdeci">static void free_cells(uint8_t *__cells)</div><div class="ttdoc">Libère ce qui a été alloué par build_cells()</div><div class="ttdef"><b>Definition</b> brainfuck.h:83</div></div>
+<div class="ttc" id="astructloop_html"><div class="ttname"><a href="structloop.html">loop</a></div><div class="ttdoc">Représente une boucle Brainfuck</div><div class="ttdef"><b>Definition</b> brainfuck.h:46</div></div>
+<div class="ttc" id="astructloop_html_a04426faf425fbe3a98ac239a87b727dc"><div class="ttname"><a href="structloop.html#a04426faf425fbe3a98ac239a87b727dc">loop::end</a></div><div class="ttdeci">const char * end</div><div class="ttdoc">L'emplacement du caractère ']'.</div><div class="ttdef"><b>Definition</b> brainfuck.h:48</div></div>
+<div class="ttc" id="astructloop_html_a26c68144f21dc0d6d1f6784ae3f143aa"><div class="ttname"><a href="structloop.html#a26c68144f21dc0d6d1f6784ae3f143aa">loop::next</a></div><div class="ttdeci">const struct loop * next</div><div class="ttdoc">La sœur immédiatement à droite.</div><div class="ttdef"><b>Definition</b> brainfuck.h:59</div></div>
+<div class="ttc" id="astructloop_html_ab46ed7ecff6cc49297814dceb0448f00"><div class="ttname"><a href="structloop.html#ab46ed7ecff6cc49297814dceb0448f00">loop::begin</a></div><div class="ttdeci">const char * begin</div><div class="ttdoc">L'emplacement du caractère '['.</div><div class="ttdef"><b>Definition</b> brainfuck.h:47</div></div>
+<div class="ttc" id="astructloop_html_ad93e7c0c7a1e6c1e3ab441caf0a9f283"><div class="ttname"><a href="structloop.html#ad93e7c0c7a1e6c1e3ab441caf0a9f283">loop::below</a></div><div class="ttdeci">const struct loop * below</div><div class="ttdoc">Un pointeur vers la boucle fille.</div><div class="ttdef"><b>Definition</b> brainfuck.h:57</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>
