@@ -174,19 +174,16 @@ void execute_instruction(
 
             break;
         case '[':
-            *__current_loop = (*__current_loop)->next;
-
             if (**__current_cell == 0) {
                 *__current_instruction = (*__current_loop)->end;
+                *__current_loop = (*__current_loop)->next;
+            } else if ((*__current_loop)->below != NULL) {
+                *__current_loop = (*__current_loop)->below;
             }
 
             break;
         case ']':
-            if (**__current_cell != 0) {
-                *__current_instruction = (*__current_loop)->begin;
-            } else {
-                *__current_loop = (*__current_loop)->parent;
-            }
+            *__current_instruction = ((*__current_loop)->begin - 1);
 
             break;
         default:
