@@ -26,7 +26,7 @@ static long get_size_of_file(FILE* __file)
     long ret = ftell(__file);
     rewind(__file);
 
-    return (ret + 1);
+    return ret;
 }
 
 const char* get_input(const char* __filename)
@@ -37,7 +37,7 @@ const char* get_input(const char* __filename)
         return NULL;
     } else {
         long size = get_size_of_file(file);
-        char* ret = malloc(sizeof(char) * size);
+        char* ret = malloc(sizeof(char) * (size + 1));
 
         fread(ret, sizeof(char), size, file);
         fclose(file);
