@@ -17,9 +17,7 @@
 
 
 #include "brainfuck.h"
-
 #include <stdio.h>
-#include <stdlib.h>
 
 static void free_resources(
     uint8_t*    __cells,

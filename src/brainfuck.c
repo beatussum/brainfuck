@@ -17,7 +17,6 @@
 
 
 #include "brainfuck.h"
-
 #include <stdio.h>
 
 static long get_size_of_file(FILE* __file)
