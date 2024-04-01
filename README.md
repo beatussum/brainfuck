@@ -63,7 +63,5 @@ Pour construire `brainfuck`, les dépendances suivantes sont nécessaires (**uni
 
 Le code de ce logiciel est sous licence GPL-3 ou toute version ultérieure.
 
----
-
-[^1]: https://fr.wikipedia.org/wiki/Brainfuck/
+[^1]: https://fr.wikipedia.org/wiki/Brainfuck
 [^2]: seulement si vous souhaitez construire la documentation
