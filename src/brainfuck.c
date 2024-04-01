@@ -50,29 +50,52 @@ const char* get_input(const char* __filename)
 const loop* build_loops(const char* __input)
 {
     loop* root = malloc(sizeof(loop));
-    *root = (loop) { .begin = 0, .end = 0, .next = NULL, .parent = NULL };
 
-    const loop* current_parent = root;
+    *root = (loop) {
+        .begin = NULL,
+        .end   = NULL,
+        .below = NULL,
+        .next  = NULL
+    };
+
+    loop* ancestors[256];
+
     loop* current_previous = root;
+    loop** current_ancestor = (ancestors - 1);
 
     for (; *__input != '\0'; ++__input) {
         switch (*__input) {
             case '[':
                 loop* new = malloc(sizeof(loop));
 
-                new->begin  = __input;
-                new->next   = NULL;
-                new->parent = current_parent;
+                *new = (loop) {
+                    .begin = __input,
+                    .end = NULL,
+                    .below = NULL,
+                    .next = NULL
+                };
 
-                current_previous->next = new;
+                if (current_previous->end == NULL) {
+                    current_previous->below = new;
+                    *(++current_ancestor) = current_previous;
 
-                current_parent = new;
+                } else {
+                    current_previous->next = new;
+                }
+
                 current_previous = new;
 
                 break;
             case ']':
-                current_parent = current_parent->parent;
-                current_previous->end = __input;
+                if (current_previous->end == NULL) {
+                    current_previous->end = __input;
+                } else {
+                    (*current_ancestor)->end = __input;
+                    current_previous->next = *current_ancestor;
+                    current_previous = *current_ancestor;
+
+                    --current_ancestor;
+                }
 
                 break;
             default:
@@ -80,15 +103,42 @@ const loop* build_loops(const char* __input)
         }
     }
 
+    current_previous->next = root;
+
     return root;
 }
 
 void free_loops(loop* __loops)
 {
-    for (loop* next; __loops != NULL; __loops = next) {
-        next = (loop*) __loops->next;
+    if (__loops->below != NULL) {
+        loop* i = __loops;
 
-        free(__loops);
+        do {
+            const loop* next;
+
+            if (i->below == NULL) {
+                next = i->next;
+                free(i);
+            } else {
+                next = i->below;
+                i->below = NULL;
+            }
+
+            i = (loop*) next;
+        } while (i != __loops);
+    }
+
+    free(__loops);
+}
+
+const loop* next_loop(const loop* __loop)
+{
+    if (__loop == NULL) {
+        return NULL;
+    } else if (__loop->below == NULL) {
+        return __loop->next;
+    } else {
+        return __loop->below;
     }
 }
 

@@ -23,10 +23,11 @@
 #include <stdlib.h>
 
 typedef struct loop {
-    const char*        begin;
-    const char*        end;
+    const char* begin;
+    const char* end;
+
+    const struct loop* below;
     const struct loop* next;
-    const struct loop* parent;
 } loop;
 
 /**
@@ -92,6 +93,15 @@ const loop* build_loops(const char* __input);
  * @see loop build_loops()
  */
 void free_loops(loop* __loops);
+
+/**
+ * @brief Passe à la boucle suivante.
+ *
+ * @param __loop L'instance `loop` à incrémenter
+ *
+ * @see loop build_loops()
+ */
+const loop* next_loop(const loop* __loop);
 
 /**
  * @brief Exécute l'instruction pointée et passe à la suivante.
