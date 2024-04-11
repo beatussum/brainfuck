@@ -17,6 +17,8 @@
 
 
 #include "brainfuck.h"
+
+#include <stdbool.h>
 #include <string.h>
 
 static long get_size_of_file(FILE* __file)
@@ -37,6 +39,9 @@ static void print_tabs(size_t __tab_level, FILE* __output)
 
 void compile(FILE* __input, FILE* __output)
 {
+    bool first            = true;
+    bool last_is_new_line = false;
+
     size_t tab_level = 1;
 
     fputs(
@@ -48,13 +53,14 @@ void compile(FILE* __input, FILE* __output)
         "#include <stdlib.h>\n"
         "\n"
         "int main() {\n"
-        "\tuint8_t* ptr = malloc(30000 * sizeof(uint8_t));\n"
+        "\tuint8_t* array = malloc(30000 * sizeof(uint8_t));\n"
         "\n"
-        "\tif (ptr == NULL) {\n"
+        "\tif (array == NULL) {\n"
         "\t\tfprintf(stderr, \"Unable to allocate the initial array!\");\n"
         "\t\treturn EXIT_FAILURE;\n"
-        "\t}"
+        "\t}\n"
         "\n"
+        "\tuint8_t* ptr = array;\n"
         "\n",
 
         __output
@@ -62,55 +68,83 @@ void compile(FILE* __input, FILE* __output)
 
     for (char input; (input = fgetc(__input)) != EOF; ) {
         switch (input) {
+            case '[':
+                if (!first) {
+                    fputc('\n', __output);
+                }
+
+                print_tabs(tab_level++, __output);
+
+                break;
+
+            case ']':
+                last_is_new_line = true;
+                print_tabs(--tab_level, __output);
+
+                break;
+
             case '>':
+            case '<':
+            case '+':
+            case '-':
+            case '.':
+            case ',':
+                last_is_new_line = false;
                 print_tabs(tab_level, __output);
+
+                break;
+
+            default:
+                break;
+        }
+
+        switch (input) {
+            case '>':
                 fprintf(__output, "++ptr;\n");
 
                 break;
             case '<':
-                print_tabs(tab_level, __output);
                 fprintf(__output, "--ptr;\n");
 
                 break;
             case '+':
-                print_tabs(tab_level, __output);
                 fprintf(__output, "++(*ptr);\n");
 
                 break;
             case '-':
-                print_tabs(tab_level, __output);
                 fprintf(__output, "--(*ptr);\n");
 
                 break;
             case '.':
-                print_tabs(tab_level, __output);
                 fprintf(__output, "putchar(*ptr);\n");
 
                 break;
             case ',':
-                print_tabs(tab_level, __output);
                 fprintf(__output, "(*ptr) = getchar();\n");
 
                 break;
             case '[':
-                fputc('\n', __output);
-                print_tabs(tab_level, __output);
                 fprintf(__output, "while (*ptr) {\n");
-                ++tab_level;
 
                 break;
             case ']':
-                --tab_level;
-                print_tabs(tab_level, __output);
                 fputs("}\n\n", __output);
 
                 break;
             default:
                 break;
         }
+
+        first = false;
+    }
+
+    if (!last_is_new_line) {
+        fputc('\n', __output);
     }
 
     fputs(
+        "\tfree(array);\n"
+        "\n"
         "\treturn EXIT_SUCCESS;\n"
         "}\n",
 
