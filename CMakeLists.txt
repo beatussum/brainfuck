@@ -18,7 +18,7 @@ cmake_minimum_required(VERSION 3.28.3)
 
 project(
     brainfuck
-    VERSION 0.9.0
+    VERSION 1.0.0
     DESCRIPTION "A Brainfuck interpreter"
     HOMEPAGE_URL "https://github.com/beatussum/brainfuck/"
     LANGUAGES C
