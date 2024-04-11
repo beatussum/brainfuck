@@ -59,6 +59,14 @@ Pour construire `brainfuck`, les dépendances suivantes sont nécessaires (**uni
     ninja docs
     ```
 
+## Utilisation
+
+```
+Usage: brainfuck <brainfuck input file>
+```
+
+L'exécutable prend un paramètre correspondant à un fichier contenant un programme _Brainfuck_.
+
 ## Licence
 
 Le code de ce logiciel est sous licence GPL-3 ou toute version ultérieure.
