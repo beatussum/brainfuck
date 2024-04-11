@@ -1,5 +1,7 @@
 # Brainfuck
 
+[![License](https://img.shields.io/github/license/beatussum/brainfuck)](LICENSE) [![GitHub release](https://img.shields.io/github/v/release/beatussum/brainfuck)](https://github.com/beatussum/brainfuck/releases/)
+
 ## Quel est ce projet ?
 
 Ce projet consiste en un interpréteur _Brainfuck_. Il s'agit d'un projet donné lors de mes études à [l'ENSIMAG](https://ensimag.grenoble-inp.fr/), une école d'ingénieur française en informatique, durant l'année scolaire **2023-2024**.
