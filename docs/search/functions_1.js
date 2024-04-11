@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['execute_5finstruction_0',['execute_instruction',['../brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca',1,'brainfuck.h']]]
+  ['compile_0',['compile',['../brainfuck_8h.html#a61e77b3a0c3fba1524fb723c0a68adff',1,'brainfuck.h']]]
 ];

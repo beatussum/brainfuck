@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">brainfuck<span id="projectnumber">&#160;0.9.0</span>
+   <div id="projectname">brainfuck<span id="projectnumber">&#160;1.0.0</span>
    </div>
    <div id="projectbrief">A Brainfuck interpreter</div>
   </td>
@@ -86,6 +86,7 @@ $(function() {
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 </div>
 <p><a href="brainfuck_8h_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
@@ -103,17 +104,20 @@ Définitions de type</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Fonctions</h2></td></tr>
+<tr class="memitem:a61e77b3a0c3fba1524fb723c0a68adff" id="r_a61e77b3a0c3fba1524fb723c0a68adff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#a61e77b3a0c3fba1524fb723c0a68adff">compile</a> (FILE *__input, FILE *__output)</td></tr>
+<tr class="memdesc:a61e77b3a0c3fba1524fb723c0a68adff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compile un programme <em>Brainfuck</em>  <br /></td></tr>
+<tr class="separator:a61e77b3a0c3fba1524fb723c0a68adff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af926e4820e11ca4ae3798cce684669b7" id="r_af926e4820e11ca4ae3798cce684669b7"><td class="memItemLeft" align="right" valign="top">static uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#af926e4820e11ca4ae3798cce684669b7">build_cells</a> (size_t __size)</td></tr>
 <tr class="memdesc:af926e4820e11ca4ae3798cce684669b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue le tableau dans lequel le programme <em>Brainfuck</em> stocke des valeurs.  <br /></td></tr>
 <tr class="separator:af926e4820e11ca4ae3798cce684669b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbd22270a4a8fe21552b07e2561056b0" id="r_afbd22270a4a8fe21552b07e2561056b0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#afbd22270a4a8fe21552b07e2561056b0">free_cells</a> (uint8_t *__cells)</td></tr>
 <tr class="memdesc:afbd22270a4a8fe21552b07e2561056b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère ce qui a été alloué par <code><a class="el" href="brainfuck_8h.html#af926e4820e11ca4ae3798cce684669b7" title="Alloue le tableau dans lequel le programme Brainfuck stocke des valeurs.">build_cells()</a></code>  <br /></td></tr>
 <tr class="separator:afbd22270a4a8fe21552b07e2561056b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2a74accde30e647765865ea18fa4580" id="r_ae2a74accde30e647765865ea18fa4580"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580">get_input</a> (const char *__filename)</td></tr>
-<tr class="memdesc:ae2a74accde30e647765865ea18fa4580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le programme <em>Brainfuck</em> à interpréter depuis un fichier.  <br /></td></tr>
-<tr class="separator:ae2a74accde30e647765865ea18fa4580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ab19cf987559e070d27b8fba5fbde45" id="r_a2ab19cf987559e070d27b8fba5fbde45"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45">get_input</a> (FILE *__file)</td></tr>
+<tr class="memdesc:a2ab19cf987559e070d27b8fba5fbde45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le programme <em>Brainfuck</em> à interpréter depuis un fichier.  <br /></td></tr>
+<tr class="separator:a2ab19cf987559e070d27b8fba5fbde45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad14725d8e271d0514ba412843dfa768f" id="r_ad14725d8e271d0514ba412843dfa768f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#ad14725d8e271d0514ba412843dfa768f">free_input</a> (char *__input)</td></tr>
-<tr class="memdesc:ad14725d8e271d0514ba412843dfa768f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère ce qui a été alloué par <code><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a></code>  <br /></td></tr>
+<tr class="memdesc:ad14725d8e271d0514ba412843dfa768f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Libère ce qui a été alloué par <code><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a></code>  <br /></td></tr>
 <tr class="separator:ad14725d8e271d0514ba412843dfa768f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9653d07c5fc9ff673d31a241a4626a2a" id="r_a9653d07c5fc9ff673d31a241a4626a2a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structloop.html">loop</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a">build_loops</a> (const char *__input)</td></tr>
 <tr class="memdesc:a9653d07c5fc9ff673d31a241a4626a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le tableau des boucles.  <br /></td></tr>
@@ -141,10 +145,10 @@ Fonctions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Représente une boucle <em>Brainfuck</em> </p>
-<p>Le programme <code>[[][]][[][]]</code> sera représenté de la manière suivante :</p>
+<p>Le programme <code>[[[][]][[][]]]</code> sera représenté de la manière suivante :</p>
 <div class="fragment"><div class="line">    R O O T</div>
 <div class="line">       ↕</div>
-<div class="line"> [[][]] [[][]]</div>
+<div class="line">[[[][]] [[][]]]</div>
 <div class="line">   ↙       ↖</div>
 <div class="line">[[][]]--&gt;[[][]]</div>
 <div class="line"> ↙  ↖     ↙  ↖</div>
@@ -215,7 +219,45 @@ Fonctions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>un <code>loop</code> qui représente les boucles du programme</dd></dl>
 <dl class="section remark"><dt>Remarques</dt><dd>Pour des raisons d'implémentation, avoir plus de 255 boucles imbriquées les unes dans les autres n'est pas possible. Dans le cas où cette condition n'est pas respectée, le comportement est indéfini.</dd></dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> <a class="el" href="brainfuck_8h.html#a53d062684320487d23a01c0545563920" title="Libère ce qui a été alloué par build_loops.">free_loops()</a> <a class="el" href="structloop.html" title="Représente une boucle Brainfuck">loop</a> <a class="el" href="brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca" title="Exécute l&#39;instruction pointée et passe à la suivante.">execute_instruction()</a> </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> <a class="el" href="brainfuck_8h.html#a53d062684320487d23a01c0545563920" title="Libère ce qui a été alloué par build_loops.">free_loops()</a> <a class="el" href="structloop.html" title="Représente une boucle Brainfuck">loop</a> <a class="el" href="brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca" title="Exécute l&#39;instruction pointée et passe à la suivante.">execute_instruction()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a61e77b3a0c3fba1524fb723c0a68adff" name="a61e77b3a0c3fba1524fb723c0a68adff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61e77b3a0c3fba1524fb723c0a68adff">&#9670;&#160;</a></span>compile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void compile </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>__input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>__output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compile un programme <em>Brainfuck</em> </p>
+<p>Cette fonction construit un code C équivalent à celui d'un programme <em>Brainfuck</em> donné.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__input</td><td>programme <em>Brainfuck</em> passé en entrée </td></tr>
+    <tr><td class="paramname">__output</td><td>sortie de la fonction </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -260,7 +302,7 @@ Fonctions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> <a class="el" href="structloop.html" title="Représente une boucle Brainfuck">loop</a> <a class="el" href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a" title="Construit le tableau des boucles.">build_loops()</a> </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> <a class="el" href="structloop.html" title="Représente une boucle Brainfuck">loop</a> <a class="el" href="brainfuck_8h.html#a9653d07c5fc9ff673d31a241a4626a2a" title="Construit le tableau des boucles.">build_loops()</a> </dd></dl>
 
 </div>
 </div>
@@ -323,14 +365,14 @@ Fonctions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Libère ce qui a été alloué par <code><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a></code> </p>
+<p>Libère ce qui a été alloué par <code><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a></code> </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">__input</td><td>l'entrée à libérer</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#ae2a74accde30e647765865ea18fa4580" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="brainfuck_8h.html#a2ab19cf987559e070d27b8fba5fbde45" title="Récupère le programme Brainfuck à interpréter depuis un fichier.">get_input()</a> </dd></dl>
 
 </div>
 </div>
@@ -361,8 +403,8 @@ Fonctions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae2a74accde30e647765865ea18fa4580" name="ae2a74accde30e647765865ea18fa4580"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2a74accde30e647765865ea18fa4580">&#9670;&#160;</a></span>get_input()</h2>
+<a id="a2ab19cf987559e070d27b8fba5fbde45" name="a2ab19cf987559e070d27b8fba5fbde45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ab19cf987559e070d27b8fba5fbde45">&#9670;&#160;</a></span>get_input()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -370,8 +412,8 @@ Fonctions</h2></td></tr>
         <tr>
           <td class="memname">const char * get_input </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>__filename</em></td><td>)</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>__file</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -380,7 +422,7 @@ Fonctions</h2></td></tr>
 <p>Récupère le programme <em>Brainfuck</em> à interpréter depuis un fichier. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">__filename</td><td>le nom du fichier <em>Brainfuck</em> à récupérer </td></tr>
+    <tr><td class="paramname">__file</td><td>le fichier <em>Brainfuck</em> à lire </td></tr>
   </table>
   </dd>
 </dl>

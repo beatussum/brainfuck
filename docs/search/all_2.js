@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['free_5fcells_0',['free_cells',['../brainfuck_8h.html#afbd22270a4a8fe21552b07e2561056b0',1,'brainfuck.h']]],
-  ['free_5finput_1',['free_input',['../brainfuck_8h.html#ad14725d8e271d0514ba412843dfa768f',1,'brainfuck.h']]],
-  ['free_5floops_2',['free_loops',['../brainfuck_8h.html#a53d062684320487d23a01c0545563920',1,'brainfuck.h']]]
+  ['end_0',['end',['../structloop.html#a04426faf425fbe3a98ac239a87b727dc',1,'loop']]],
+  ['execute_5finstruction_1',['execute_instruction',['../brainfuck_8h.html#a56d7d84049608c407954a5ed6a93cbca',1,'brainfuck.h']]]
 ];
