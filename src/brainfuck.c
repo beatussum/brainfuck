@@ -17,7 +17,7 @@
 
 
 #include "brainfuck.h"
-#include <stdio.h>
+#include <string.h>
 
 static long get_size_of_file(FILE* __file)
 {
@@ -28,21 +28,105 @@ static long get_size_of_file(FILE* __file)
     return ret;
 }
 
-const char* get_input(const char* __filename)
+static void print_tabs(size_t __tab_level, FILE* __output)
 {
-    FILE* file = fopen(__filename, "r");
-
-    if (file == NULL) {
-        return NULL;
-    } else {
-        long size = get_size_of_file(file);
-        char* ret = malloc(sizeof(char) * (size + 1));
-
-        fread(ret, sizeof(char), size, file);
-        fclose(file);
-
-        return ret;
+    for (; __tab_level != 0; --__tab_level) {
+        fputc('\t', __output);
     }
+}
+
+void compile(FILE* __input, FILE* __output)
+{
+    size_t tab_level = 1;
+
+    fputs(
+        "/* THIS FILE WAS AUTOMATICALLY GENERATED */\n"
+        "\n"
+        "\n"
+        "#include <stdint.h>\n"
+        "#include <stdio.h>\n"
+        "#include <stdlib.h>\n"
+        "\n"
+        "int main() {\n"
+        "\tuint8_t* ptr = malloc(30000 * sizeof(uint8_t));\n"
+        "\n"
+        "\tif (ptr == NULL) {\n"
+        "\t\tfprintf(stderr, \"Unable to allocate the initial array!\");\n"
+        "\t\treturn EXIT_FAILURE;\n"
+        "\t}"
+        "\n"
+        "\n",
+
+        __output
+    );
+
+    for (char input; (input = fgetc(__input)) != EOF; ) {
+        switch (input) {
+            case '>':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "++ptr;\n");
+
+                break;
+            case '<':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "--ptr;\n");
+
+                break;
+            case '+':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "++(*ptr);\n");
+
+                break;
+            case '-':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "--(*ptr);\n");
+
+                break;
+            case '.':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "putchar(*ptr);\n");
+
+                break;
+            case ',':
+                print_tabs(tab_level, __output);
+                fprintf(__output, "(*ptr) = getchar();\n");
+
+                break;
+            case '[':
+                fputc('\n', __output);
+                print_tabs(tab_level, __output);
+                fprintf(__output, "while (*ptr) {\n");
+                ++tab_level;
+
+                break;
+            case ']':
+                --tab_level;
+                print_tabs(tab_level, __output);
+                fputs("}\n\n", __output);
+
+                break;
+            default:
+                break;
+        }
+    }
+
+    fputs(
+        "\treturn EXIT_SUCCESS;\n"
+        "}\n",
+
+         __output
+    );
+}
+
+const char* get_input(FILE* __file)
+{
+    long size = get_size_of_file(__file);
+    char* ret = malloc(sizeof(char) * (size + 1));
+
+    fread(ret, sizeof(char), size, __file);
+    ret[size] = '\0';
+
+    return ret;
 }
 
 const loop* build_loops(const char* __input)
@@ -126,17 +210,6 @@ void free_loops(loop* __loops)
     }
 
     free(__loops);
-}
-
-static const loop* next_loop(const loop* __loop)
-{
-    if (__loop == NULL) {
-        return NULL;
-    } else if (__loop->below == NULL) {
-        return __loop->next;
-    } else {
-        return __loop->below;
-    }
 }
 
 void execute_instruction(

@@ -62,10 +62,18 @@ Pour construire `brainfuck`, les dépendances suivantes sont nécessaires (**uni
 ## Utilisation
 
 ```
-Usage: brainfuck <brainfuck input file>
+USAGE:
+    brainfuck compile <input> <output>
+    brainfuck run <input>
+
+For the `compile` command, you can replace:
+    - `input` by `-` to set the standard input as input,
+    - `output` by `-` to set the standard output as output.
 ```
 
-L'exécutable prend un paramètre correspondant à un fichier contenant un programme _Brainfuck_.
+Pour `compile`, le programme va générer dans la sortie `output` **un source C** à partir du programme _Brainfuck_ `input` donné en entrée.
+
+Pour `run`, l'exécutable prend un paramètre correspondant à un fichier contenant un programme _Brainfuck_.
 
 ## Licence
 

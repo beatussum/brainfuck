@@ -21,6 +21,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * @file
@@ -30,16 +31,16 @@
 /**
  * @brief Représente une boucle _Brainfuck_
  *
- * Le programme `[[][]][[][]]` sera représenté de la manière suivante :
+ * Le programme `[[[][]][[][]]]` sera représenté de la manière suivante :
  *
- * ```raw
- *       R O O T
- *          ↕
- *    [[][]] [[][]]
- *      ↙       ↖
- *   [[][]]-->[[][]]
- *    ↙  ↖     ↙  ↖
- *   []->[]   []->[]
+ * ```
+ *     R O O T
+ *        ↕
+ * [[[][]] [[][]]]
+ *    ↙       ↖
+ * [[][]]-->[[][]]
+ *  ↙  ↖     ↙  ↖
+ * []->[]   []->[]
  * ```
  */
 
@@ -58,6 +59,18 @@ typedef struct loop {
 
     const struct loop* next; ///< La sœur immédiatement à droite
 } loop;
+
+/**
+ * @brief Compile un programme _Brainfuck_
+ *
+ * Cette fonction construit un code C équivalent à celui d'un programme
+ * _Brainfuck_ donné.
+ *
+ * @param __input programme _Brainfuck_ passé en entrée
+ * @param __output sortie de la fonction
+ */
+
+void compile(FILE* __input, FILE* __output);
 
 /**
  * @brief Alloue le tableau dans lequel le programme _Brainfuck_ stocke des
@@ -85,14 +98,14 @@ static inline void free_cells(uint8_t* __cells) { free(__cells); }
 /**
  * @brief Récupère le programme _Brainfuck_ à interpréter depuis un fichier
  *
- * @param __filename le nom du fichier _Brainfuck_ à récupérer
+ * @param __file le fichier _Brainfuck_ à lire
  * @return un tableau de caractère terminé par le caractère '\0' ou `NULL` si
  * `__filename` n'existe pas dans le répertoire courant
  *
  * @see execute_instruction() free_input()
  */
 
-const char* get_input(const char* __filename);
+const char* get_input(FILE* __file);
 
 /**
  * @brief Libère ce qui a été alloué par `get_input()`
